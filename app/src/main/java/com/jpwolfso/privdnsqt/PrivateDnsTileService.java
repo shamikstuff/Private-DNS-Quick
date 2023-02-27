@@ -38,7 +38,7 @@ public class PrivateDnsTileService extends TileService {
         } else if (dnsmode.equalsIgnoreCase(DNS_MODE_ON)) {
             String dnsprovider = Settings.Global.getString(getContentResolver(), "private_dns_specifier");
             if ((dnsprovider != null)) {
-                refreshTile(tile, Tile.STATE_ACTIVE, dnsprovider, R.drawable.ic_dnson);
+                refreshTile(tile, Tile.STATE_ACTIVE, getString(R.string.dns_on), R.drawable.ic_dnson);
             } else {
                 Toast.makeText(this, R.string.toast_no_permission, Toast.LENGTH_SHORT).show();
             }
@@ -67,12 +67,12 @@ public class PrivateDnsTileService extends TileService {
                 if (toggleauto) {
                     changeTileState(tile, Tile.STATE_ACTIVE, getString(R.string.qt_auto), R.drawable.ic_dnsauto, DNS_MODE_AUTO);
                 } else if (toggleon) {
-                    changeTileState(tile, Tile.STATE_ACTIVE, dnsprovider, R.drawable.ic_dnson, DNS_MODE_ON);
+                    changeTileState(tile, Tile.STATE_ACTIVE, getString(R.string.dns_on), R.drawable.ic_dnson, DNS_MODE_ON);
                 }
             } else if (dnsmode.equalsIgnoreCase(DNS_MODE_AUTO)) {
                 if (dnsprovider != null) {
                     if (toggleon) {
-                        changeTileState(tile, Tile.STATE_ACTIVE, dnsprovider, R.drawable.ic_dnson, DNS_MODE_ON);
+                        changeTileState(tile, Tile.STATE_ACTIVE, getString(R.string.dns_on), R.drawable.ic_dnson, DNS_MODE_ON);
                     } else if (toggleoff) {
                         changeTileState(tile, Tile.STATE_INACTIVE, getString(R.string.qt_off), R.drawable.ic_dnsoff, DNS_MODE_OFF);
                     }
